@@ -11,7 +11,7 @@ setuptools.setup(
     author="James Potter",
     install_requires=REQUIREMENTS,
     long_description=long_description,
-    packages=["base", "upload"],
+    packages=["base"],
     setup_requires=["setuptools_scm"],
     include_package_data=True,
     classifiers=[
