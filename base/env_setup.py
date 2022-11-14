@@ -42,9 +42,8 @@ class EnvironmentSetup:
 class Browser:
     path_root = None
 
-    def __init__(self, playwright, test_title):
+    def __init__(self, playwright):
         self.playwright = playwright
-        self.test_title = test_title
         self.browser_type = None
         self.context = None
 
