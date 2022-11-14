@@ -60,10 +60,15 @@ class Browser:
             self.browser_type = self.playwright.webkit.launch(headless=self.headless)
 
     def start(self):
-        self.context = self.browser_type.new_context(
-            storage_state=f"{Browser.path_root}/state.json",
-            viewport={"width": 1920, "height": 1080},
-        )
+        try:
+            self.context = self.browser_type.new_context(
+                storage_state=f"{Browser.path_root}/state.json",
+                viewport={"width": 1920, "height": 1080},
+            )
+        except FileNotFoundError:
+            self.context = self.browser_type.new_context(
+                viewport={"width": 1920, "height": 1080},
+            )
         self.context.set_default_timeout(5000)
         self.context.set_default_navigation_timeout(30000)
         return self.context
